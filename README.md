@@ -19,6 +19,63 @@ API ini menyimpan daftar sepatu yang sedang dicuci. Setiap item memiliki `name`,
 - `created_at` (timestamptz)
 - `updated_at` (timestamptz)
 
+POST http://localhost:3000/items
+{
+    "name": "Under Armour Charged",
+    "customer_name": "Mega Sari",
+    "status": "Selesai",
+    "price": 53000
+}
+
+[
+    {
+        "id": "2527a990-e7dc-4ef7-b0eb-008860276f26",
+        "name": "Under Armour Charged",
+        "customer_name": "Mega Sari",
+        "status": "Selesai",
+        "price": 53000,
+        "created_at": "2025-10-23T16:07:54.339975+00:00",
+        "updated_at": "2025-10-23T16:07:54.339975+00:00"
+    }
+]
+
+GET http://localhost:3000/items
+GET http://localhost:3000/items?status=Selesai
+
+PUT http://localhost:3000/items/2527a990-e7dc-4ef7-b0eb-008860276f26
+{
+  "name": "Under Armour Charged Plus",
+  "customer_name": "Mega Sari",
+  "status": "Dalam Proses",
+  "price": 58000
+}
+
+[
+  {
+    "id": "2527a990-e7dc-4ef7-b0eb-008860276f26",
+    "name": "Under Armour Charged Plus",
+    "customer_name": "Mega Sari",
+    "status": "Dalam Proses",
+    "price": 58000,
+    "created_at": "2025-10-23T16:07:54.339975+00:00",
+    "updated_at": "2025-10-23T16:15:12.110000+00:00"
+  }
+]
+
+DELETE http://localhost:3000/items/2527a990-e7dc-4ef7-b0eb-008860276f26
+{
+  "message": "Item berhasil dihapus"
+}
+
+Link Github : https://github.com/IzacLuthfi/shoe-wash-api_izac.git
+
+Upload ke vercel.com
+isi di bagian Environment variables
+
+SUPABASE_URL=https://viddxjmtruncgtnluvda.supabase.co
+
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpZGR4am10cnVuY2d0bmx1dmRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyMjc5OTgsImV4cCI6MjA3NjgwMzk5OH0.8Lw4YCOhbE5dEAU4L94xrrldu7ZhZewkQgGx3xcCIjk
+
 SQL:
 ```sql
 create table public.items (
